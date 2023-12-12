@@ -42,5 +42,9 @@
 		"vitest": "^0.32.2",
 		"wrangler": "^3.17.1"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@fontsource/eb-garamond": "^5.0.16",
+		"@fontsource/roboto": "^5.0.8"
+	}
 }

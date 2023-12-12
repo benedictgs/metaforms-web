@@ -1,59 +1,70 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	
+	//Section scroll container transition behaviour
+	let y = 0;
+    let scrollContainer;
+
+	let yw = 0;
+
+	function handleScroll() {
+        y = scrollContainer.scrollTop;
+
+        // if (y < containerTop) { yw = containerTop}
+        // else if (y > containerBottom) { yw = containerBottom}
+        // else {yw = y}
+    }
+	
+	import Hero from '$lib/Hero.svelte';
+	import Quote from '$lib/Quote.svelte';
+	import Works from '$lib/Works.svelte';
+	import Vision from '$lib/Vision.svelte';
+	import Contact from '$lib/Contact.svelte';
+
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Metaforms Design Studio</title>
+	<meta name="description" content="Metaforms Design Studio" />
 </svelte:head>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-	
-	<Counter />
+<section class="scroll-container" on:scroll={handleScroll} bind:this={scrollContainer}>
+	<div>
+		<Hero />
+	</div>
+	<div>
+		<Quote />
+	</div>
+	<div>
+		<Works bind:y />
+	</div>
+	<div>
+		<Vision />
+	</div>
+	<div>
+		<Contact />
+	</div>
 </section>
-
+<div class="debug hidden">
+    test {y} scrolled, window is  orientation
+</div> 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
+	section.scroll-container {
+		scroll-behavior: smooth;
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        width: 100vw;
+        height: 100vh;
 	}
 
-	h1 {
-		width: 100%;
-	}
+	section.scroll-container>div {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        width: 100%;
+    }
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
+	.debug {
+        position: fixed;
+        top : 0;
+        right: 0;
+    }
 </style>
