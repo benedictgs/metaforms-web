@@ -9,7 +9,7 @@
     }
 
     import imgLogoCrop from '$lib/images/logo-crop.png';
-    import imgHero from '$lib/images/hero.jpg';
+    import imgHero from '$lib/images/hero.webp';
 	import MenuIcon from './MenuIcon.svelte';
 </script>
 
@@ -19,7 +19,7 @@
             <img src={imgLogoCrop} alt="metaform logo" class=" object-contain w-40 h-10 object-center">
         </div>
         {#if open}
-            <div class="hidden sm:flex flex-row flex-nowrap gap-3 pl-3 items-center" >
+            <div class="hidden sm:flex flex-row flex-nowrap gap-6 pl-6 items-center" >
                 {#each menuItems as menuItem}
                     <a in:fly|global={{ x: 10, duration: 500 }} href="#{menuItem.id}">{menuItem.name}</a>
                 {/each}            
