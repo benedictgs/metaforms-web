@@ -37,13 +37,13 @@
             {/each}            
         </div>
     {/if}
-    <div class="row-[span_12_/_span_12] relative">
+    <a class="row-[span_12_/_span_12] relative" href="#works">
         <div class="w-full h-full bg-gray-500"><img src={imgHero} alt="hdr house" class="h-full w-full object-cover object-bottom"></div>
         <div class="absolute bottom-0 bg-gradient-to-t from-neutral-900 text-white w-full p-12 ">
             <p class="font-bold">HDR House</p>
             <p>2022</p>
         </div>
-    </div>
+    </a>
 </div>
 
 <style>

@@ -64,7 +64,7 @@
                 <p class="mb-24 sm:mb-2 text-xs leading-relaxed max-w-[90ch]">{paragraphs[i]}</p>
                 {/if}
                 {#if i < images.length}
-                <img src={images[i]} alt={`Image ${i}`} class="bg-neutral-200 w-full h-96 mb-3 max-h-[45vh] sm:hidden"/>
+                <img src={images[i]} alt={`Image ${i}`} class="bg-neutral-200 w-full h-96 mb-3 max-h-[45vh] sm:hidden object-cover object-center"/>
                 {/if}
                 {/each}
             </div>

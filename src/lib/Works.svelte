@@ -129,7 +129,7 @@
                     {#each workCol as workItem (workItem.id)}
                         <li transition:fade class="bg-neutral-200 relative"  on:click={() => {openModal(workItem)}}>
                             <img src={workItem.mainimage} alt={workItem.name} class="w-full object-cover object-center">
-                            <div class="absolute bottom-0 p-3 text-white">
+                            <div class="absolute bottom-0 p-3 text-white text-xs sm:text-sm md:text-base">
                                 <p class="font-bold">{workItem.name}</p>
                                 <p>{workItem.year}</p>
                             </div>
