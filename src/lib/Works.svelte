@@ -2,8 +2,10 @@
     import Project from '$lib/Project.svelte';
 	import { onMount, tick } from 'svelte';
 	import { fade } from 'svelte/transition';
+    import { projects } from "$lib/project-data";
 
     let showModal = false;
+    let selectedProject
 
     //scroll animation
     /**
@@ -18,21 +20,9 @@
     
     export let y = 0;
     
-    let items = [
-        {id:1,name:"t",category:"residential"},
-        {id:2,name:"t",category:"residential"},
-        {id:3,name:"t",category:"residential"},
-        {id:4,name:"t",category:"hospitality"},
-        {id:5,name:"t",category:"hospitality"},
-        {id:6,name:"t",category:"commercial"},
-        {id:7,name:"t",category:"hospitality"},
-        {id:8,name:"t",category:"residential"},
-        {id:9,name:"t",category:"residential"},
-        {id:10,name:"t",category:"residential"},
-        {id:11,name:"t",category:"residential"},
-    ]
+    let items = projects;
 
-    let screenOrientation = "potrait"
+    let screenOrientation = "landscape"
     const columnOnLandscape = 3
     const columnOnPotrait = 2
     let selectedCategory = 'all';
@@ -68,6 +58,11 @@
     //     }
 
     // $: if (workContainer) {updateDimension(distributedItems)}
+
+    function openModal(clickedProject) {
+        selectedProject = clickedProject;
+        showModal = true;
+    }
 
     function setY(y) {
         if (containerTop && y < containerTop ) { return containerTop}
@@ -118,7 +113,7 @@
 <div class="flex flex-col p-3 min-h-screen" id="works">
     <div class="flex flex-row flex-nowrap justify-between pt-3 pb-3">
         <div>
-            <h1 class="text-2xl lg:text-3xl font-sans font-medium">Works</h1>
+            <h1 class="text-2xl lg:text-3xl font-sans font-bold">Works</h1>
             <div class="flex flex-row w-full gap-2 lg:text-lg font-sans font-thin">
                 <button on:click={() => setCategory('all')} class:selected={selectedCategory === 'all'}>All</button>
                 <button on:click={() => setCategory('residential')} class:selected={selectedCategory === 'residential'}>Residential</button>
@@ -127,13 +122,21 @@
             </div>
         </div>
     </div>
-    <ul class="flex flex-row  gap-3 items-start" bind:this={workContainer}>
+    <ul class="grow flex flex-row gap-3 items-start" bind:this={workContainer}>
         
             {#each distributedItems as workCol, index }
-                <div bind:this={workColElement[index]} class="flex-1 flex flex-col bg-cyan-100 gap-3" style="transform: translate(0,{(yw-containerTop)*(containerHeight-colHeight[index])/(containerBottom-containerTop)}px)">
+                <div bind:this={workColElement[index]} class="flex-1 flex flex-col gap-3" style="transform: translate(0,{(yw-containerTop)*(containerHeight-colHeight[index])/(containerBottom-containerTop)}px)">
                     {#each workCol as workItem (workItem.id)}
-                        <li transition:fade class="bg-neutral-200"  style="height : {Math.floor(Math.random() * (500 - 200) + 200)}px" on:click={() => {showModal = true}}>
-                            {yw}px scrolled {workItem.category} on index {index}, height of this col is {colHeight} of {workColElement}, size of the container is {containerHeight}, with {containerTop} top and {containerBottom} bottom.
+                        <li transition:fade class="bg-neutral-200 relative"  on:click={() => {openModal(workItem)}}>
+                            <img src={workItem.mainimage} alt={workItem.name} class="w-full object-cover object-center">
+                            <div class="absolute bottom-0 p-3 text-white">
+                                <p class="font-bold">{workItem.name}</p>
+                                <p>{workItem.year}</p>
+                            </div>
+                            <p class="absolute top-0 p-3 hidden">
+                                {yw}px scrolled {workItem.category} on index {index}, height of this col is {colHeight} of {workColElement}, size of the container is {containerHeight}, with {containerTop} top and {containerBottom} bottom.
+                                translate for {(yw-containerTop)}*{(containerHeight-colHeight[index])}/{(containerBottom-containerTop)}px, window height .
+                            </p>
                         </li>
                     {/each}
                 </div>
@@ -143,18 +146,15 @@
     </ul>
 </div>
 {#if showModal}
-
-
-    <Project bind:showModal />
-
+    <Project bind:showModal selectedProject={selectedProject} />
 {/if}
 
 <style>
     button {
-        font-weight: normal;
+        font-weight: 300;
     }
 
     button.selected {
-        font-weight: bold;
+        font-weight: 500;
     }
 </style>

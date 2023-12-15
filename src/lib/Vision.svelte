@@ -2,9 +2,9 @@
     import {onMount} from 'svelte';
     import {fade} from 'svelte/transition';
 
-    import imgVision1 from '$lib/images/vision-1.png';
-    import imgVision2 from '$lib/images/vision-2.jpg';
-    import imgVision3 from '$lib/images/vision-3.png';
+    import imgVision1 from '$lib/images/vision-1.webp';
+    import imgVision2 from '$lib/images/vision-2.webp';
+    import imgVision3 from '$lib/images/vision-3.webp';
 
     let bgImages = [imgVision1,imgVision2,imgVision3];
     let currentIndex = 0;
