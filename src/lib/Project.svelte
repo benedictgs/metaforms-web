@@ -68,17 +68,12 @@
                 {/if}
                 {/each}
             </div>
-            <a class="block text-center bg-neutral-200 sm:hidden" on:click={() => showModal = false}>Return to our works</a>
+            <button class="block text-center bg-neutral-200 sm:hidden" on:click={() => showModal = false}>Return to our works</button>
             
         </div>
     </div>
 </div>
 
 <style>
-    .bar1:hover {
-        transform: rotate(45deg) translate(20%,-33%) ;
-    }
-    .bar2 {
-        transform: rotate(-45deg) translate(-50%,10%);
-    }
+
 </style>
