@@ -14,16 +14,12 @@
     let imageMain = selectedProject.mainimage;
     let images = selectedProject.images;  
 
-    // Function to alternate between paragraphs and images
-    function alternateItems(index) {
-        const isParagraph = index % 2 === 0;
-        const originalIndex = Math.floor(index / 2);
-        
-        if (isParagraph && originalIndex < paragraphs.length) {
-        return paragraphs[originalIndex];
-        } else if (!isParagraph && originalIndex < images.length) {
-        return images[originalIndex];
-        }
+    
+    let scrollContainer;
+
+    function handleWheel(event) {
+        const scrollingFactor = 8;
+        scrollContainer.scrollLeft += event.deltaY * scrollingFactor;
     }
 </script>
 
@@ -39,7 +35,7 @@
                 </svg>
             </button>
         </div>
-        <div in:fade={{ delay: 250, duration: 300 }} class="flex flex-row flex-nowrap gap-3 h-96 max-h-[45vh] overflow-x-auto">
+        <div in:fade={{ delay: 250, duration: 300 }} class="flex flex-row flex-nowrap gap-3 h-96 max-h-[45vh] overflow-x-auto scroll-smooth" bind:this={scrollContainer} on:wheel|preventDefault={handleWheel}>
             <img src={imageMain} alt="" class="h-full w-full object-cover sm:object-contain sm:w-auto">
             {#each images as image}
             <img src={image} alt="" class="h-full w-auto object-contain hidden sm:block">

@@ -45,7 +45,7 @@
             <div class="flex-1 flex flex-row gap-6 py-6 overflow-x-auto w-full">
                 {#each ["MT","HE","AS"] as customer, i}
                     
-                    <div class="bg-black p-6 text-clip flex flex-col justify-between h-full overflow-clip grow w-72 shrink-0" on:click={()=>{changeImage(i)}}>
+                    <div class="bg-black/50 hover:bg-black p-6 text-clip flex flex-col justify-between h-full overflow-clip grow w-72 shrink-0" on:click={()=>{changeImage(i)}}>
                         <div class="font-light text-sm sm:text-base leading-loose flex-1 text-center line-clamp-2">Saya orangnya detail dan metaforms mampu mengakomodir tingkat kedetailan saya.</div>
                         <div class="text-right align-text-bottom">{customer}</div>
                     </div>
