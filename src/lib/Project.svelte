@@ -45,7 +45,7 @@
             <img src={image} alt="" class="h-full w-auto object-contain hidden sm:block">
             {/each}
         </div>
-        <h1 class="sm:hidden font-bold py-3 text-2xl"> Project name</h1>
+        <h1 class="sm:hidden font-bold py-3 text-2xl">{selectedProject.name}</h1>
         <div class=" sm:grid sm:grid-cols-4 sm:p-6">
             <div class="sm:border-black sm:border-r text-xs sm:justify-self-end sm:text-right sm:pr-6 sm:pt-1">
                 <h2 class="font-bold">Location</h2>
