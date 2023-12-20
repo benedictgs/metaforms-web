@@ -1,6 +1,6 @@
 <script>
     import Project from '$lib/Project.svelte';
-	import { onMount, tick } from 'svelte';
+	import { afterUpdate, onMount, tick } from 'svelte';
 	import { fade } from 'svelte/transition';
     import { projects } from "$lib/project-data";
 
@@ -17,6 +17,8 @@
     let containerBottom
     let containerTop
     let containerHeight
+    let maxColHeight
+    let windowInnerHeight
     
     export let y = 0;
     
@@ -44,20 +46,29 @@
         selectedCategory = category;
     }
 
-    
-    $: distributedItems = distributeItem(selectedCategory,screenOrientation)
-
-    // //Update y coordinate and height for work scroll transition
-    // function updateDimension() {
-    //         containerBottom = workContainer.getBoundingClientRect().bottom - window.innerHeight; 
-    //         containerTop = workContainer.getBoundingClientRect().top ;
-    //         containerHeight = workContainer.getBoundingClientRect().height ;
-    //         workColElement.forEach((element,index) => {
-    //             colHeight[index] = element.getBoundingClientRect().height ;
-    //         });
-    //     }
-
-    // $: if (workContainer) {updateDimension(distributedItems)}
+    let distributedItems
+    $: {
+        distributedItems = distributeItem(selectedCategory,screenOrientation)
+        // if(workContainer){
+        //     tick().then(() => updateDimension())
+        // }
+    }
+    //Update y coordinate and height for work scroll transition
+    function updateDimension() {
+            console.log("dimension updated")
+            windowInnerHeight = window.innerHeight;
+            //on category change, the rects is changed different from initial load rects, so the bottom and top coordinate is changed too.
+            containerBottom = workContainer.getClientRects()[0].bottom - window.innerHeight +y; 
+            containerTop = workContainer.getClientRects()[0].top + y;
+            containerHeight = workContainer.clientHeight ;
+            workColElement.forEach((element,index) => {
+                // on screen orientation columns is changed, the last index can be undefined. 
+                if (element) {
+                    colHeight[index] = element.getBoundingClientRect().height;
+                }
+            });
+            maxColHeight = Math.max(...colHeight);
+        }
 
     function openModal(clickedProject) {
         selectedProject = clickedProject;
@@ -92,22 +103,16 @@
         // Initial check
         handleViewportChange(landscapeMQ);
 
+        // Initial items distribution
+        distributedItems = distributeItem()
 
-        //Update y coordinate and height for work scroll transition
-        function updateDimension() {
-            containerBottom = workContainer.getBoundingClientRect().bottom - window.innerHeight; 
-            containerTop = workContainer.getBoundingClientRect().top ;
-            containerHeight = workContainer.getBoundingClientRect().height ;
-            workColElement.forEach((element,index) => {
-                colHeight[index] = element.getBoundingClientRect().height ;
-            });
-        }
+        updateDimension()
 
-        // Initial update
-        updateDimension();
-        
     });
 
+    afterUpdate(() => {
+        updateDimension()
+    })
 </script>
 
 <div class="flex flex-col p-3 min-h-screen" id="works">
@@ -122,11 +127,11 @@
             </div>
         </div>
     </div>
-    <ul class="grow flex flex-row gap-3 items-start" bind:this={workContainer}>
+    <ul class="grow flex flex-row gap-3 items-start overflow-clip" bind:this={workContainer}>
         
             {#each distributedItems as workCol, index }
-                <div bind:this={workColElement[index]} class="flex-1 flex flex-col gap-3" style="transform: translate(0,{(yw-containerTop)*(containerHeight-colHeight[index])/(containerBottom-containerTop)}px)">
-                    {#each workCol as workItem (workItem.id)}
+                <!-- must be added for stability, if container height is smaller than view port then no translation. (workContainer.getBoundingClientRect().height > window.innerHeight) -->
+                <div bind:this={workColElement[index]} class="flex-1 flex flex-col gap-3" style="transform: translate(0,{containerHeight > windowInnerHeight ? (yw-containerTop)*(maxColHeight-colHeight[index])/(containerBottom-containerTop) : 0}px)">                    {#each workCol as workItem (workItem.id)}
                         <li transition:fade class="bg-neutral-200 relative"  on:click={() => {openModal(workItem)}}>
                             <img src={workItem.mainimage} alt={workItem.name} class="w-full object-cover object-center">
                             <div class="absolute bottom-0 p-3 text-white text-xs sm:text-sm md:text-base">

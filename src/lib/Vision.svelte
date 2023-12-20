@@ -35,7 +35,7 @@
         <div class="grow grid grid-cols-3 row-span-2 p-3 w-full">
             <div class="col-span-3 md:col-span-2 lg:col-span-1">
                 <h1 class="font-medium my-6 text-3xl">Our Vision</h1>
-                <p class="max-w-[75ch] font-light text-sm sm:text-base lg:text-lg leading-loose">We rooted in the belief that building is not only a place for rest but also place for meditating, have a mindful spirit, and free the soul. We are embracing a living-in-nature harmony, minimalism elegance, and climate sensitive.
+                <p class="max-w-[75ch] font-light text-sm/loose sm:text-base/loose lg:text-lg/loose">We rooted in the belief that building is not only a place for rest but also place for meditating, have a mindful spirit, and free the soul. We are embracing a living-in-nature harmony, minimalism elegance, and climate sensitive.
                     <br>You are not just acquiring a design; you are investing in a vision—a vision that transforms living spaces into contemplative havens where one can find solace and serenity amidst the chaos of the modern world.
                     </p>
             </div>

@@ -68,7 +68,7 @@
                 {/if}
                 {/each}
             </div>
-            <button class="block text-center bg-neutral-200 sm:hidden" on:click={() => showModal = false}>Return to our works</button>
+            <button class="w-full block text-center bg-neutral-200 sm:hidden" on:click={() => showModal = false}>Return to our works</button>
             
         </div>
     </div>
