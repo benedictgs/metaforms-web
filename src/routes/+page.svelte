@@ -13,7 +13,7 @@
         // else if (y > containerBottom) { yw = containerBottom}
         // else {yw = y}
     }
-	
+
 	import Hero from '$lib/Hero.svelte';
 	import Quote from '$lib/Quote.svelte';
 	import Works from '$lib/Works.svelte';
@@ -50,7 +50,7 @@
 <style>
 	section.scroll-container {
 		scroll-behavior: smooth;
-        scroll-snap-type: y mandatory;
+        scroll-snap-type: y proximity;
         overflow-y: scroll;
         width: 100vw;
         height: 100vh;

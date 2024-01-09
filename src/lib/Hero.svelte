@@ -31,7 +31,7 @@
         </button>
     </div>
     {#if open}
-        <div transition:fly|global={{ y: -10, duration: 500 }} class="flex sm:hidden flex-col flex-nowrap gap-3 items-center absolute left-0 top-0 right-0 mt-20 pb-3 z-10 bg-white border-b border-black" >
+        <div transition:fly|global={{ y: -10, duration: 500 }} class="flex sm:hidden flex-col flex-nowrap gap-3 items-center absolute left-0 top-0 right-0 mt-16 pt-3 pb-3 z-10 bg-white border-b border-black" >
             {#each menuItems as menuItem}
                 <a in:fly|global={{ y: -10, duration: 500 }} href="#{menuItem.id}">{menuItem.name}</a>
             {/each}            
