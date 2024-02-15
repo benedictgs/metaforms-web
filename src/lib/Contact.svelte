@@ -36,7 +36,7 @@
 <div class="lg:h-screen flex flex-col lg:grid lg:grid-cols-4 overflow-hidden" id="contact" >
     <div class="lg:row-span-5 bg-white border-b lg:border-b-0 lg:border-r border-black py-14 px-12 lg:h-screen overflow-y-auto">
         <h2 class="font-bold uppercase text-2xl">The Team</h2>
-        <p class="font-serif">We have established ourselves since 2021. Our experience and professional network help our clients with success.</p>
+        <p class="font-sans">We have established ourselves since 2021. Our experience and professional network help our clients with success.</p>
         <div class="flex flex-row flex-wrap gap-3 mt-3">
             {#each teamData as teamRow}
                 <div class="flex flex-row flex-wrap gap-3">
@@ -44,7 +44,7 @@
                         <div class="flex flex-col">
                             <img class="aspect-square object-cover h-44 w-44 bg-neutral-200" src={member[2]} alt="{member[0]} as {member[1]} of metaform">
                             <p class="font-sans font-bold">{member[0]}</p>
-                            <p class="font-serif">{member[1]}</p>
+                            <p class="font-sans">{member[1]}</p>
                         </div>
                     {/each}
                 </div>
@@ -72,19 +72,19 @@
             <h2 class="font-bold uppercase md:text-base lg:text-lg xl:text-xl sm:col-span-2">Contact</h2>
             <div>
                 <h3 class="md:text-sm lg:text-base xl:text-lg font-bold capitalize">Message & Whatsapp</h3>
-                <a href="https://wa.me/6281292892163" class="font-serif md:text-sm lg:text-base xl:text-lg"> +62 812 9289 2163 </a>
+                <a href="https://wa.me/6281292892163" class="font-sans md:text-sm lg:text-base xl:text-lg"> +62 812 9289 2163 </a>
             </div>
             <div>
                 <h3 class="md:text-sm lg:text-base xl:text-lg font-bold capitalize">Instagram</h3>
-                <a href="https://www.instagram.com/metaforms.ds/" target="_blank" rel="noopener noreferrer" class="font-serif md:text-sm lg:text-base xl:text-lg">@metaforms.ds</a>
+                <a href="https://www.instagram.com/metaforms.ds/" target="_blank" rel="noopener noreferrer" class="font-sans md:text-sm lg:text-base xl:text-lg">@metaforms.ds</a>
             </div>
             <div>
                 <h3 class="md:text-sm lg:text-base xl:text-lg font-bold capitalize">Email</h3>
-                <a href="mailto:metaformsds@gmail.com" class="font-serif md:text-sm lg:text-base xl:text-lg">metaformsds@gmail.com</a>
+                <a href="mailto:metaformsds@gmail.com" class="font-sans md:text-sm lg:text-base xl:text-lg">metaformsds@gmail.com</a>
             </div>
             <div>
                 <h3 class="md:text-sm lg:text-base xl:text-lg font-bold capitalize">Office</h3>
-                <p class="font-serif md:text-sm lg:text-base xl:text-lg">Ruko Circle West I1 Blok A16, Citra 6, Jakarta Barat</p>
+                <p class="font-sans md:text-sm lg:text-base xl:text-lg">Ruko Circle West I1 Blok A16, Citra 6, Jakarta Barat</p>
             </div>
         </div>
     </div>
