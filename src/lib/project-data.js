@@ -1,6 +1,7 @@
 
 export const projects = [
         {id:1,name:"HDR House",category:"residential",
+        heroimage: "/images/projects/HDR-hero.webp",
         mainimage: "/images/projects/HDR-House-main.webp",
         images:[
             "/images/projects/HDR-1.webp",
@@ -29,6 +30,7 @@ export const projects = [
         ]
     },
         {id:2,name:"LA House",category:"residential",
+        heroimage: "/images/projects/LA-hero.webp",
         mainimage: "/images/projects/LA-House-main.webp",
         images:[
             "/images/projects/LA-1.webp",
@@ -50,11 +52,12 @@ export const projects = [
         ]
     },
         {id:3,name:"Kiyana Hotel",category:"hospitality",
+        heroimage: "/images/projects/Kiyana-hero.webp",
         mainimage: "/images/projects/Kiyana-Hotel-main.webp",
         images:[
-            "/images/projects/kiyana-1.webp",
-            "/images/projects/kiyana-2.webp",
-            "/images/projects/kiyana-3.webp",
+            "/images/projects/Kiyana-1.webp",
+            "/images/projects/Kiyana-2.webp",
+            "/images/projects/Kiyana-3.webp",
         ],
         year: "2022",
         location: "Batang, Central Java",
@@ -70,6 +73,7 @@ export const projects = [
         ]
     },
         {id:4,name:"GL House",category:"residential",
+        heroimage: "/images/projects/GL-hero.webp",
         mainimage: "/images/projects/GL-House-main.webp",
         images:[
             "/images/projects/GL-1.webp",
@@ -95,6 +99,7 @@ export const projects = [
         ]
     },
         {id:5,name:"Hashbay Cafe",category:"commercial",
+        heroimage: "/images/projects/Hashbay-hero.webp",
         mainimage: "/images/projects/Hashbay-main.webp",
         images:[
             "/images/projects/Hashbay-1.webp",
@@ -125,6 +130,7 @@ export const projects = [
         ]
     },
         {id:6,name:"GIS Kindergarten",category:"commercial",
+        heroimage: "/images/projects/GIS-hero.webp",
         mainimage: "/images/projects/GIS-Kindergarten-main.webp",
         images:[
             "/images/projects/GIS-1.webp",
@@ -145,6 +151,7 @@ export const projects = [
         ]
     },
         {id:7,name:"ID House",category:"residential",
+        heroimage: "/images/projects/ID-hero.webp",
         mainimage: "/images/projects/ID-House-main.webp",
         images:[
             "/images/projects/ID-1.webp",
@@ -166,6 +173,7 @@ export const projects = [
         ]
     },
         {id:8,name:"Headquarter PHG",category:"commercial",
+        heroimage: "/images/projects/PHG-hero.webp",
         mainimage: "/images/projects/PHG-main.webp",
         images:[
             "/images/projects/PHG-1.webp",
@@ -187,6 +195,7 @@ export const projects = [
         ]
     },
         {id:9,name:"AM Villa",category:"hospitality",
+        heroimage: "/images/projects/AM-hero.webp",
         mainimage: "/images/projects/AM-main.webp",
         images:[
             "/images/projects/AM-1.webp",
@@ -212,6 +221,7 @@ export const projects = [
         ]
     },
         {id:10,name:"KH Headquarter",category:"commercial",
+        heroimage: "/images/projects/KH-hero.webp",
         mainimage: "/images/projects/KH-main.webp",
         images:[
             "/images/projects/KH-1.webp",
@@ -232,6 +242,7 @@ export const projects = [
         ]
     },
         {id:11,name:"MOKSHA Garden",category:"commercial",
+        heroimage: "/images/projects/Moksha-hero.webp",
         mainimage: "/images/projects/Moksha-Garden-main.webp",
         images:[
             "/images/projects/Moksha-1.webp",

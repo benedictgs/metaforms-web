@@ -1,5 +1,6 @@
 <script>
-    import {fly} from 'svelte/transition';
+    import {onMount} from 'svelte';
+    import {fly, fade} from 'svelte/transition';
 
     let open = false;
     let menuItems = [{name:"Works",id:"works"},{name:"Contact us",id:"contact"}]
@@ -11,9 +12,22 @@
     import imgLogoCrop from '$lib/images/logo-crop.png';
     import imgHero from '$lib/images/hero.webp';
 	import MenuIcon from './MenuIcon.svelte';
+    import { projects } from "$lib/project-data";
+
+    let heroImages = projects.map(project => project.heroimage);
+    let currentIndex = 0;
+
+    onMount(() => {
+        const interval = setInterval(() => {
+			currentIndex = (currentIndex + 1) % heroImages.length;
+		}, 5000);
+
+		return () => clearInterval(interval);
+    });
+
 </script>
 
-<div class="h-screen grid grid-rows-[repeat(12,minmax(0,1fr))] gap-3 p-3 relative">
+<div class="h-svh grid grid-rows-[repeat(12,minmax(0,1fr))] gap-3 p-3 relative">
     <div class="row-span-1 flex flex-row flex-nowrap w-full justify-between border-b border-black">
         <div class=" grow flex flex-col justify-center border-r border-black pl-6">
             <img src={imgLogoCrop} alt="metaform logo" class=" object-contain w-40 h-10 object-center">
@@ -27,7 +41,6 @@
         {/if}
         <button class="aspect-square flex items-center" on:click={toggleMenu} >
             <MenuIcon />
-
         </button>
     </div>
     {#if open}
@@ -38,10 +51,18 @@
         </div>
     {/if}
     <a class="row-[span_12_/_span_12] relative" href="#works">
-        <div class="w-full h-full bg-gray-500"><img src={imgHero} alt="hdr house" class="h-full w-full object-cover object-bottom"></div>
+        
+        <div class="w-full h-full">
+            <!-- <img src={imgHero} alt="hdr house" class="h-full w-full object-cover object-bottom"> -->
+            {#each heroImages as image, i (image)}
+                {#if i === currentIndex}
+                    <img src={image} transition:fade class="h-full w-full object-cover object-bottom" />
+                {/if}
+            {/each}
+        </div>
         <div class="absolute bottom-0 bg-gradient-to-t from-neutral-900 text-white w-full p-12 ">
-            <p class="font-bold">HDR House</p>
-            <p>2022</p>
+            <p class="font-bold">{projects[currentIndex].name}</p>
+            <p>{projects[currentIndex].year}</p>
         </div>
     </a>
 </div>
