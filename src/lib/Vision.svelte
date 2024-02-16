@@ -45,8 +45,8 @@
         {/if}
     {/each}
     <!-- <img src={imgVision1} alt="background of cafe" class="absolute h-full w-full object-cover"> -->
-    <div class="absolute w-full bg-black/80 h-full"></div>
-    <div class="absolute min-w-[75ch] max-w-[100vh] bg-gradient-to-r from-black h-full"></div>
+    <div class="absolute w-full bg-black/60 h-full"></div>
+    <div class="absolute min-w-[75ch] max-w-[100vh] bg-gradient-to-r from-black/50 h-full"></div>
     <div class="absolute h-full w-full flex flex-col p-3 text-white overflow-clip">
         <div class="grow grid grid-cols-3 row-span-2 p-3 w-full">
             <div class="col-span-3 md:col-span-2 lg:col-span-1">
