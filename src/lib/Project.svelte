@@ -1,5 +1,6 @@
 <script>
     import { fade } from "svelte/transition";
+    
 
     import { projects } from "$lib/project-data";
 
@@ -21,6 +22,21 @@
         const scrollingFactor = 8;
         scrollContainer.scrollLeft += event.deltaY * scrollingFactor;
     }
+
+    // When the modal is opened, add a new history state
+    $: if (showModal) {
+        history.pushState({ modalOpen: true }, '');
+    }
+
+    // When the modal is closed, go back in history
+    $: if (!showModal && history.state && history.state.modalOpen) {
+        history.back();
+    }
+
+    // When the back button is pressed, close the modal
+    window.onpopstate = () => {
+        showModal = false;
+    };
 </script>
 
 <div transition:fade class="fixed top-0 left-0 right-0 bg-white">
@@ -29,7 +45,7 @@
             <div class="invisible sm:visible grow flex flex-col justify-center pb-3 text-2xl lg:text-3xl font-medium">
                 {selectedProject.name}
             </div>
-            <button class="aspect-square grid place-content-center" on:click={() => showModal = false}>
+            <button class="aspect-square grid place-content-center" on:click={() => {showModal = false; window.location.hash = 'works';}}>
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 8L16 16M8 16L16 8" stroke="gray" stroke-width="4" />
                 </svg>
