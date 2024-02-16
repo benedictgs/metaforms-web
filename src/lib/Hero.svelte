@@ -20,7 +20,7 @@
     onMount(() => {
         const interval = setInterval(() => {
 			currentIndex = (currentIndex + 1) % heroImages.length;
-		}, 5000);
+		}, 6000);
 
 		return () => clearInterval(interval);
     });
@@ -52,11 +52,11 @@
     {/if}
     <a class="row-[span_12_/_span_12] relative" href="#works">
         
-        <div class="w-full h-full">
+        <div class="w-full h-full relative">
             <!-- <img src={imgHero} alt="hdr house" class="h-full w-full object-cover object-bottom"> -->
             {#each heroImages as image, i (image)}
                 {#if i === currentIndex}
-                    <img src={image} transition:fade class="h-full w-full object-cover object-bottom" />
+                    <img src={image} transition:fade={{duration:2000}} class="absolute h-full w-full object-cover object-center" />
                 {/if}
             {/each}
         </div>
