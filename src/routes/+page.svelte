@@ -20,6 +20,8 @@
 	import Vision from '$lib/Vision.svelte';
 	import Contact from '$lib/Contact.svelte';
 
+	import Modal from '$lib/components/Modal.svelte';
+
 </script>
 
 <svelte:head>
@@ -47,6 +49,7 @@
 <div class="debug hidden">
     test {y} scrolled, window is  orientation
 </div> 
+<Modal />
 <style>
 	section.scroll-container {
 		scroll-behavior: smooth;
