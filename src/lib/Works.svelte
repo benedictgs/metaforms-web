@@ -131,7 +131,10 @@
         
             {#each distributedItems as workCol, index }
                 <!-- must be added for stability, if container height is smaller than view port then no translation. (workContainer.getBoundingClientRect().height > window.innerHeight) -->
-                <div bind:this={workColElement[index]} class="flex-1 flex flex-col gap-3" style="transform: translate(0,{containerHeight > windowInnerHeight ? (yw-containerTop)*(maxColHeight-colHeight[index])/(containerBottom-containerTop) : 0}px)">                    {#each workCol as workItem (workItem.id)}
+                <div bind:this={workColElement[index]} class="flex-1 flex flex-col gap-3" style="transform: translate(0,{containerHeight > windowInnerHeight ? (yw-containerTop)*(maxColHeight-colHeight[index])/(containerBottom-containerTop) : 0}px)">
+                    {#each workCol as workItem (workItem.id)}
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
+                        <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
                         <li transition:fade class="bg-neutral-200 relative"  on:click={() => {openModal(workItem)}}>
                             <img src={workItem.mainimage} alt={workItem.name} class="w-full object-cover object-center">
                             <div class="absolute bottom-0 p-3 text-white text-xs sm:text-sm md:text-base">
