@@ -41,24 +41,24 @@
             {#each teamData as teamRow}
                 <div class="flex flex-row flex-wrap gap-3">
                     {#each teamRow as member}
-                        <div class="flex flex-col">
-                            <img class="aspect-square object-cover h-44 w-44 bg-neutral-200" src={member[2]} alt="{member[0]} as {member[1]} of metaform">
-                            <p class="font-sans font-bold">{member[0]}</p>
-                            <p class="font-sans">{member[1]}</p>
+                        <div class="flex flex-col min-w-20">
+                            <img class="aspect-square object-cover h-20 w-20 lg:h-44 lg:w-44 bg-neutral-200" src={member[2]} alt="{member[0]} as {member[1]} of metaform">
+                            <p class="font-sans font-bold text-sm">{member[0]}</p>
+                            <p class="font-sans text-xs">{member[1]}</p>
                         </div>
                     {/each}
                 </div>
             {/each}
         </div>
     </div>
-    <div class="col-span-3 row-span-4 flex flex-col p-14 ">
+    <div class="col-span-3 row-span-4 flex flex-col p-6">
         <h2 class="font-bold uppercase text-2xl">WANT TO BUILD YOUR SERENE BUILDING?</h2>
         <p class="max-w-[75ch]">We are delighted to hear your inquiry. Write us a letter to learn more about your design need and curiosity</p>
         <form on:submit|preventDefault={handleSubmit} class="grow flex flex-col max-w-[75ch] py-12 gap-1">
             <label for="nameField">Name</label>
             <input type="text" id="nameField" bind:value={nameInput} class="bg-[#cfcdbf] "/>
             <label for="messageField">Room requirement</label>
-            <textarea id="messageField" bind:value={messageInput} class="bg-[#cfcdbf] grow basis-full min-h-[7rem] resize-none"/>
+            <textarea id="messageField" bind:value={messageInput} class="bg-[#cfcdbf] grow basis-full min-h-1/3 resize-none"/>
             <div class="flex flex-row flex-wrap justify-between">
                 <p class="text-xs text-[#cfcdbf] font-light ">this message will be directly sent to Whatsapp</p>
                 <div class="flex flex-row-reverse grow">
@@ -84,7 +84,7 @@
             </div>
             <div>
                 <h3 class="md:text-sm lg:text-base xl:text-lg font-bold capitalize">Office</h3>
-                <p class="font-sans md:text-sm lg:text-base xl:text-lg">Ruko Circle West I1 Blok A16, Citra 6, Jakarta Barat</p>
+                <p class="font-sans md:text-xs lg:text-sm xl:text-base">Ruko Circle West I1 Blok A16, Citra 6, Jakarta Barat</p>
             </div>
         </div>
     </div>
